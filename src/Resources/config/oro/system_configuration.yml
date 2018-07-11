@@ -1,0 +1,65 @@
+system_configuration:
+    groups:
+        aligent:
+            title: 'aligent.label'
+        aligent_abn:
+            icon: 'fa-id-card'
+            title: 'aligent.frontend.abn.label'
+        abn:
+            title: 'aligent.frontend.abn.configuration.label'
+    fields:
+        aligent_abn.enabled:
+            data_type: boolean
+            type: oro_config_checkbox
+            options:
+                label: 'aligent.frontend.abn.enabled.label'
+                required: false
+                resettable: false
+        aligent_abn.required:
+            data_type: boolean
+            type: oro_config_checkbox
+            options:
+                label: 'aligent.frontend.abn.required.label'
+                required: false
+                resettable: false
+        aligent_abn.group:
+            data_type: integer
+            type: alg_customer_customer_group_select
+            options:
+                label: 'aligent.frontend.abn.default_group.label'
+
+        aligent_abn.no_abn_group:
+            data_type: integer
+            type: alg_customer_customer_group_select
+            options:
+                label: 'aligent.frontend.abn.default_group_no_abn.label'
+    tree:
+        system_configuration:
+            commerce:
+                children:
+                    aligent:
+                        children:
+                            aligent_abn:
+                                children:
+                                    abn:
+                                        priority: 50
+                                        children:
+                                            - aligent_abn.enabled
+                                            - aligent_abn.required
+                                            - aligent_abn.group
+                                            - aligent_abn.no_abn_group
+        website_configuration:
+            commerce:
+                children:
+                    aligent:
+                        children:
+                            aligent_abn:
+                                children:
+                                    abn:
+                                        priority: 50
+                                        children:
+                                            - aligent_abn.enabled
+                                            - aligent_abn.required
+                                            - aligent_abn.group
+                                            - aligent_abn.no_abn_group
+

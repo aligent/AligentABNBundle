@@ -1,0 +1,6 @@
+config:
+  paths:
+    'aligentabn/js/validator/abn': 'bundles/aligentabn/js/validator/abn.js'
+    'aligentabn/js/app/modules/abn-module': 'bundles/aligentabn/js/app/modules/abn-module.js'
+  appmodules:
+    - aligentabn/js/app/modules/abn-module

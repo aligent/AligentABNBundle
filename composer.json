@@ -1,0 +1,9 @@
+{
+    "name": "aligent/orocommerce-abn-bundle",
+    "description": "OroCommerce Bundle to add an ABN to the customer registration form and Customer Entity",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-0": { "Aligent\\ABNBundle": "./src" }
+    }
+}
