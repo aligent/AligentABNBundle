@@ -4,6 +4,6 @@
     "type": "project",
     "require": {},
     "autoload": {
-        "psr-0": { "Aligent\\ABNBundle": "./src" }
+        "psr-4": { "Aligent\\ABNBundle\\": "./src/" }
     }
 }
