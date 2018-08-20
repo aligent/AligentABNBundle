@@ -48,7 +48,7 @@ class RegistrationTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return FrontendCustomerUserRegistrationType::NAME;
+        return FrontendCustomerUserRegistrationType::class;
     }
 
     /**
