@@ -10,27 +10,27 @@ system_configuration:
     fields:
         aligent_abn.enabled:
             data_type: boolean
-            type: oro_config_checkbox
+            type: Oro\Bundle\ConfigBundle\Form\Type\ConfigCheckbox
             options:
                 label: 'aligent.frontend.abn.enabled.label'
                 required: false
                 resettable: false
         aligent_abn.required:
             data_type: boolean
-            type: oro_config_checkbox
+            type: Oro\Bundle\ConfigBundle\Form\Type\ConfigCheckbox
             options:
                 label: 'aligent.frontend.abn.required.label'
                 required: false
                 resettable: false
         aligent_abn.group:
             data_type: integer
-            type: alg_customer_customer_group_select
+            type: Aligent\AbnBundle\Form\Type\CustomerGroupSelectType
             options:
                 label: 'aligent.frontend.abn.default_group.label'
 
         aligent_abn.no_abn_group:
             data_type: integer
-            type: alg_customer_customer_group_select
+            type: Aligent\AbnBundle\Form\Type\CustomerGroupSelectType
             options:
                 label: 'aligent.frontend.abn.default_group_no_abn.label'
     tree:

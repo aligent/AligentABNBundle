@@ -15,7 +15,7 @@ services:
       - [setConfigManager, ['@oro_config.manager']]
       - [setSubscriber, ['@alg_abn.form.subscriber.frontend_customer_user_registration_subscriber']]
     tags:
-      - { name: form.type_extension, extended_type: Oro\Bundle\CustomerBundle\Form\Type\FrontendCustomerUserRegistrationType }
+      - { name: form.type_extension, extended_type: oro_customer_frontend_customer_user_register }
 
   alg_abn.form.subscriber.frontend_customer_user_registration_subscriber:
     class: '%alg_abn.form.subscriber.frontend_customer_user_registration_subscriber.class%'
