@@ -24,13 +24,13 @@ system_configuration:
                 resettable: false
         aligent_abn.group:
             data_type: integer
-            type: Aligent\AbnBundle\Form\Type\CustomerGroupSelectType
+            type: Aligent\ABNBundle\Form\Type\CustomerGroupSelectType
             options:
                 label: 'aligent.frontend.abn.default_group.label'
 
         aligent_abn.no_abn_group:
             data_type: integer
-            type: Aligent\AbnBundle\Form\Type\CustomerGroupSelectType
+            type: Aligent\ABNBundle\Form\Type\CustomerGroupSelectType
             options:
                 label: 'aligent.frontend.abn.default_group_no_abn.label'
     tree:
