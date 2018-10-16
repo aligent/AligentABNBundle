@@ -65,7 +65,7 @@ class FrontendCustomerUserRegistrationTypeSubscriber implements EventSubscriberI
             if ($form->has('abn') && !empty($form->get('abn')->getData())) {
 
                 $abn = $form->get('abn')->getData();
-                $customer->setAbn($abn);
+                $customer->setBusinessNumber($abn);
                 $this->setDefaultGroup($customer, Configuration::WITH_ABN_GROUP);
             } else {
                 $this->setDefaultGroup($customer, Configuration::NO_ABN_GROUP);

@@ -3,7 +3,7 @@ Aligent ABN Bundle for OroCommerce
 
 Facts
 -----
-- version: 1.0.0
+- version: 3.0.0 (Compatible with OroCommerce >=3.0)
 - composer name: aligent/orocommerce-abn-bundle
 
 Description
