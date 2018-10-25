@@ -13,9 +13,9 @@
 namespace Aligent\ABNBundle\Migrations\Schema\v1_3;
 
 
+use Aligent\ABNBundle\Migration\RemoveFieldQuery;
 use Doctrine\DBAL\Schema\Schema;
 use Oro\Bundle\CustomerBundle\Entity\Customer;
-use Oro\Bundle\EntityConfigBundle\Migration\RemoveFieldQuery;
 use Oro\Bundle\MigrationBundle\Migration\Migration;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
