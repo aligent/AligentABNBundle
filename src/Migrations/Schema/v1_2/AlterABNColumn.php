@@ -51,7 +51,8 @@ class AlterABNColumn implements Migration
                 ],
             ]);
             $table = $schema->getTable('oro_customer');
-            $table->addUniqueIndex(['business_number']);
+            // Removed unique index on ABN as all clients have requested this
+            // $table->addUniqueIndex(['business_number']);
         }
 
         $queries->addPostQuery('UPDATE oro_customer SET business_number = abn WHERE abn IS NOT NULL');

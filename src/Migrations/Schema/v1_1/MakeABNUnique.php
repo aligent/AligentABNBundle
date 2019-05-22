@@ -30,7 +30,10 @@ class MakeABNUnique implements Migration
      */
     public function up(Schema $schema, QueryBag $queries)
     {
-        $table = $schema->getTable('oro_customer');
-        $table->addUniqueIndex(['abn']);
+        // Removed unique index on ABN as all clients have requested this
+        // This migration is for reference only now
+
+        // $table = $schema->getTable('oro_customer');
+        // $table->addUniqueIndex(['abn']);
     }
 }
