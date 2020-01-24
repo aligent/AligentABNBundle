@@ -66,4 +66,11 @@ class RegistrationTypeExtension extends AbstractTypeExtension
     {
         $this->configManager = $configManager;
     }
+
+    public static function getExtendedTypes()
+    {
+        return [
+            FrontendCustomerUserRegistrationType::class,
+        ];
+    }
 }

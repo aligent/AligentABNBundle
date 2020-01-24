@@ -1,25 +1,23 @@
 aligent:
-  label: Aligent
-  frontend:
-    abn:
-      label: ABN
-      configuration:
-        label: Configuration
-      default_group:
-        label: Default Group (With Supplied ABN)
-      default_group_no_abn:
-        label: Default Group (No ABN)
-      enabled:
-        label: Enabled
-      required:
-        label: Required
-  abn:
-    form:
-      group_choice:
-        placeholder: "Choose Customer Group"
-
-aligent:
+    label: Aligent
+    frontend:
+        abn:
+            label: ABN
+            configuration:
+                label: Configuration
+            default_group:
+                label: Default Group (With Supplied ABN)
+            default_group_no_abn:
+                label: Default Group (No ABN)
+            enabled:
+                label: Enabled
+            required:
+                label: Required
     customer:
         business_number:
             label: Business Number
             description: Business number of customer (ABN or NZBN)
+    abn:
+        form:
+            group_choice:
+                placeholder: "Choose Customer Group"
