@@ -1,11 +1,7 @@
-define([
-    'oroui/js/app/controllers/base/controller'
-], function (BaseController) {
+define(function(require) {
     'use strict';
 
-    BaseController.loadBeforeAction([
-        'jquery', 'jquery.validate'
-    ], function ($) {
-        $.validator.loadMethod('aligentabn/js/validator/abn');
-    });
+    var $ = require('jquery.validate');
+
+    $.validator.loadMethod('aligentabn/js/validator/abn');
 });

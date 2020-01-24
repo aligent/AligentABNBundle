@@ -53,7 +53,7 @@ class CustomerGroupSelectType extends AbstractType
 
                 $result = [];
                 foreach ($groups as $group) {
-                    $result[$group->getId()] = $group->getName();
+                    $result[$group->getName()] = $group->getId();
                 }
 
                 return $result;

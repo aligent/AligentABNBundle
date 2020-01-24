@@ -11,12 +11,15 @@ aligent:
         label: Default Group (No ABN)
       enabled:
         label: Enabled
+      required:
+        label: Required
   abn:
     form:
       group_choice:
         placeholder: "Choose Customer Group"
 
-alg_abn:
+aligent:
     customer:
-        abn:
-            label: ABN
+        business_number:
+            label: Business Number
+            description: Business number of customer (ABN or NZBN)

@@ -10,14 +10,16 @@
  * @link      http://www.aligent.com.au/
  */
 
-namespace Aligent\ABNBundle\Migrations\Schema\v1_1;
+namespace Aligent\ABNBundle\Migrations\Schema\v1_3;
 
 
+use Aligent\ABNBundle\Migration\RemoveFieldQuery;
 use Doctrine\DBAL\Schema\Schema;
+use Oro\Bundle\CustomerBundle\Entity\Customer;
 use Oro\Bundle\MigrationBundle\Migration\Migration;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
-class MakeABNUnique implements Migration
+class DropABNColumn implements Migration
 {
 
     /**
@@ -30,10 +32,8 @@ class MakeABNUnique implements Migration
      */
     public function up(Schema $schema, QueryBag $queries)
     {
-        // Removed unique index on ABN as all clients have requested this
-        // This migration is for reference only now
-
-        // $table = $schema->getTable('oro_customer');
-        // $table->addUniqueIndex(['abn']);
+        $table = $schema->getTable('oro_customer');
+        $table->dropColumn('abn');
+        $queries->addPostQuery(new RemoveFieldQuery(Customer::class, 'abn'));
     }
 }
