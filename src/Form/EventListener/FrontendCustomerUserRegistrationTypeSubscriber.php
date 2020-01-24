@@ -14,6 +14,7 @@ namespace Aligent\ABNBundle\Form\EventListener;
 
 use Aligent\ABNBundle\DependencyInjection\Configuration;
 use Oro\Bundle\CustomerBundle\Entity\Customer;
+use Oro\Bundle\CustomerBundle\Entity\CustomerUser;
 use Oro\Bundle\EntityBundle\ORM\Registry;
 use Oro\Bundle\ConfigBundle\Config\ConfigManager;
 use Oro\Bundle\CustomerBundle\Entity\CustomerGroup;
@@ -59,7 +60,9 @@ class FrontendCustomerUserRegistrationTypeSubscriber implements EventSubscriberI
     public function postSubmit(FormEvent $formEvent)
     {
         if ($this->configManager->get(Configuration::getConfigKeyByName(Configuration::ENABLED), false)) {
+            /** @var CustomerUser $customerUser */
             $customerUser = $formEvent->getData();
+            /** @var Customer $customer */
             $customer = $customerUser->getCustomer();
             $form = $formEvent->getForm();
             if ($form->has('abn') && !empty($form->get('abn')->getData())) {
@@ -76,8 +79,9 @@ class FrontendCustomerUserRegistrationTypeSubscriber implements EventSubscriberI
     /**
      * Set the default group of the user if it is set and exists
      * @param Customer $customer
+     * @param string $paramName
      */
-    protected function setDefaultGroup(Customer $customer, $paramName)
+    protected function setDefaultGroup(Customer $customer, string $paramName)
     {
         $groupId = $this->configManager->get(Configuration::getConfigKeyByName($paramName));
         if (isset($groupId)) {
