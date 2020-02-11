@@ -1,0 +1,6 @@
+app-modules:
+  - aligentabn/js/app/modules/abn-module
+
+dynamic-imports:
+  oropricing:
+    - aligentabn/js/validator/abn
