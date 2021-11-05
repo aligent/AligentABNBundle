@@ -36,7 +36,7 @@ class CustomerGroupSelectType extends AbstractType
 
     public function getName()
     {
-        return 'alg_customer_customer_group_select';
+        return 'aligent_abn_customer_group_select';
     }
 
     /**
