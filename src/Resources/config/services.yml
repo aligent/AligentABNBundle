@@ -2,7 +2,7 @@ services:
   Aligent\ABNBundle\Form\Extension\RegistrationTypeExtension:
     calls:
       - [setConfigManager, ['@oro_config.manager']]
-      - [setSubscriber, ['@alg_abn.form.subscriber.frontend_customer_user_registration_subscriber']]
+      - [setSubscriber, ['@Aligent\ABNBundle\Form\EventListener\FrontendCustomerUserRegistrationTypeSubscriber']]
     tags:
       - { name: form.type_extension, extended_type: Oro\Bundle\CustomerBundle\Form\Type\FrontendCustomerUserRegistrationType }
 
