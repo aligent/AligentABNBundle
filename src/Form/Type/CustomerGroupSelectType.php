@@ -12,7 +12,7 @@
 
 namespace Aligent\ABNBundle\Form\Type;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Oro\Bundle\CustomerBundle\Entity\CustomerGroup;
 use Oro\Bundle\CustomerBundle\Entity\Repository\CustomerGroupRepository;
 
