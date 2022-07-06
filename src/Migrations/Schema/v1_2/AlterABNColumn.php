@@ -12,7 +12,6 @@
 
 namespace Aligent\ABNBundle\Migrations\Schema\v1_2;
 
-
 use Doctrine\DBAL\Schema\Schema;
 use Oro\Bundle\EntityBundle\EntityConfig\DatagridScope;
 use Oro\Bundle\EntityExtendBundle\EntityConfig\ExtendScope;
