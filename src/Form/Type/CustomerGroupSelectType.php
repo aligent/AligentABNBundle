@@ -12,7 +12,7 @@
 
 namespace Aligent\ABNBundle\Form\Type;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Oro\Bundle\CustomerBundle\Entity\CustomerGroup;
 use Oro\Bundle\CustomerBundle\Entity\Repository\CustomerGroupRepository;
 
@@ -36,7 +36,7 @@ class CustomerGroupSelectType extends AbstractType
 
     public function getName()
     {
-        return 'alg_customer_customer_group_select';
+        return 'aligent_abn_customer_group_select';
     }
 
     /**

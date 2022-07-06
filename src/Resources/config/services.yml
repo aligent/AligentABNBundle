@@ -1,31 +1,18 @@
-parameters:
-  # Form Extensions
-  alg_abn.form.registration_form_type_extension.class: Aligent\ABNBundle\Form\Extension\RegistrationTypeExtension
-
-  # Form Subscribers
-  alg_abn.form.subscriber.frontend_customer_user_registration_subscriber.class: Aligent\ABNBundle\Form\EventListener\FrontendCustomerUserRegistrationTypeSubscriber
-
-  # Form Type
-  alg_abn.form.customer_group_select_type.class: Aligent\ABNBundle\Form\Type\CustomerGroupSelectType
-
 services:
-  alg_abn.form.registration_form_type_extension:
-    class: '%alg_abn.form.registration_form_type_extension.class%'
+  Aligent\ABNBundle\Form\Extension\RegistrationTypeExtension:
     calls:
       - [setConfigManager, ['@oro_config.manager']]
-      - [setSubscriber, ['@alg_abn.form.subscriber.frontend_customer_user_registration_subscriber']]
+      - [setSubscriber, ['@Aligent\ABNBundle\Form\EventListener\FrontendCustomerUserRegistrationTypeSubscriber']]
     tags:
       - { name: form.type_extension, extended_type: Oro\Bundle\CustomerBundle\Form\Type\FrontendCustomerUserRegistrationType }
 
-  alg_abn.form.subscriber.frontend_customer_user_registration_subscriber:
-    class: '%alg_abn.form.subscriber.frontend_customer_user_registration_subscriber.class%'
+  Aligent\ABNBundle\Form\EventListener\FrontendCustomerUserRegistrationTypeSubscriber:
     arguments:
       - '@doctrine'
       - '@oro_config.manager'
 
-  alg_abn.form.customer_group_select_type:
-    class: '%alg_abn.form.customer_group_select_type.class%'
+  Aligent\ABNBundle\Form\Type\CustomerGroupSelectType:
     arguments:
       - '@doctrine'
     tags:
-        - { name: form.type, alias: alg_customer_customer_group_select }
+        - { name: form.type, alias: aligent_abn_customer_group_select }
