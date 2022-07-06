@@ -29,4 +29,4 @@ jobs:
       - name: Update Packagist
         env:
           API_TOKEN: ${{ secrets.PackagistApiToken }}
-        run: curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=aligent&apiToken='$API_TOKEN -d'{"repository":{"url":"https://packagist.org/packages/aligent/orocommerce-s3mediabundle"}}'
+        run: curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=aligent&apiToken='$API_TOKEN -d'{"repository":{"url":"https://packagist.org/packages/aligent/orocommerce-abn-bundle"}}'
