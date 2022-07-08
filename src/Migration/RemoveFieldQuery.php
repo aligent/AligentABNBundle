@@ -38,16 +38,16 @@ class RemoveFieldQuery extends BaseRemoveFieldQuery
         }
         $entityData = $this->connection->convertToPHPValue($entityRow['data'], Type::TARRAY);
 
-        if(isset($entityData['extend']['schema']['property'][$this->entityField])) {
+        if (isset($entityData['extend']['schema']['property'][$this->entityField])) {
             unset($entityData['extend']['schema']['property'][$this->entityField]);
         }
 
-        if(isset($entityData['extend']['index'][$this->entityField])) {
+        if (isset($entityData['extend']['index'][$this->entityField])) {
             unset($entityData['extend']['index'][$this->entityField]);
         }
 
         $extendClass = ExtendHelper::getExtendEntityProxyClassName($this->entityClass);
-        if(isset($entityData['extend']['schema']['doctrine'][$extendClass]['fields'][$this->entityField])) {
+        if (isset($entityData['extend']['schema']['doctrine'][$extendClass]['fields'][$this->entityField])) {
             unset($entityData['extend']['schema']['doctrine'][$extendClass]['fields'][$this->entityField]);
         }
 

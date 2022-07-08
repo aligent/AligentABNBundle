@@ -30,7 +30,7 @@ class StripWhitespaceSubscriber implements EventSubscriberInterface
         }
     }
 
-    static public function getSubscribedEvents()
+    public static function getSubscribedEvents()
     {
         return [FormEvents::SUBMIT => 'onSubmit'];
     }

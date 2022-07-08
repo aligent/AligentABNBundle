@@ -33,7 +33,8 @@ class RegistrationTypeExtension extends AbstractTypeExtension
         if ($this->configManager->get(Configuration::getConfigKeyByName(Configuration::ENABLED), false)) {
             $builder->add('abn', ABNType::class, [
                     'label' => 'aligent.frontend.abn.label',
-                    'required' => $this->configManager->get(Configuration::getConfigKeyByName(Configuration::ABN_REQUIRED)),
+                    'required'
+                        => $this->configManager->get(Configuration::getConfigKeyByName(Configuration::ABN_REQUIRED)),
                     'mapped' => false
                 ]);
 
