@@ -19,6 +19,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
+    const ROOT_NODE = 'aligent_abn';
     const ENABLED = 'enabled';
     const ABN_REQUIRED = 'required';
     const WITH_ABN_GROUP = 'group';
@@ -27,12 +28,12 @@ class Configuration implements ConfigurationInterface
     /**
      * Generates the configuration tree builder.
      *
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder The tree builder
+     * @return TreeBuilder The tree builder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root(AligentABNExtension::ALIAS);
+        $treeBuilder = new TreeBuilder(self::ROOT_NODE);
+        $rootNode = $treeBuilder->getRootNode();
 
         SettingsBuilder::append(
             $rootNode,
@@ -46,13 +47,12 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-
     /**
-     * @param string $key
+     * @param string $name
      * @return string
      */
-    public static function getConfigKeyByName($key)
+    public static function getConfigKeyByName(string $name): string
     {
-        return implode(ConfigManager::SECTION_MODEL_SEPARATOR, [AligentABNExtension::ALIAS, $key]);
+        return sprintf(self::ROOT_NODE . '%s%s', ConfigManager::SECTION_MODEL_SEPARATOR, $name);
     }
 }

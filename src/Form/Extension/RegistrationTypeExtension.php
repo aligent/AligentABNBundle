@@ -42,16 +42,6 @@ class RegistrationTypeExtension extends AbstractTypeExtension
     }
 
     /**
-     * Returns the name of the type being extended.
-     *
-     * @return string The name of the type being extended
-     */
-    public function getExtendedType()
-    {
-        return FrontendCustomerUserRegistrationType::class;
-    }
-
-    /**
      * @param EventSubscriberInterface $subscriber
      */
     public function setSubscriber(EventSubscriberInterface $subscriber)
@@ -67,7 +57,7 @@ class RegistrationTypeExtension extends AbstractTypeExtension
         $this->configManager = $configManager;
     }
 
-    public static function getExtendedTypes()
+    public static function getExtendedTypes(): Iterable
     {
         return [
             FrontendCustomerUserRegistrationType::class,
