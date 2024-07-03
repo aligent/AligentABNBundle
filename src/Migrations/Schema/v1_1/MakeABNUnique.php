@@ -18,16 +18,11 @@ use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
 class MakeABNUnique implements Migration
 {
-
     /**
      * Modifies the given schema to apply necessary changes of a database
      * The given query bag can be used to apply additional SQL queries before and after schema changes
-     *
-     * @param Schema $schema
-     * @param QueryBag $queries
-     * @return void
      */
-    public function up(Schema $schema, QueryBag $queries)
+    public function up(Schema $schema, QueryBag $queries): void
     {
         // Removed unique index on ABN as all clients have requested this
         // This migration is for reference only now

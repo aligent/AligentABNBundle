@@ -12,9 +12,9 @@
 
 namespace Aligent\ABNBundle\Validator\Constraints;
 
+use Oro\Bundle\EntityExtendBundle\EntityPropertyInfo;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class ABNValidator extends ConstraintValidator
@@ -29,7 +29,7 @@ class ABNValidator extends ConstraintValidator
      * @param mixed $value The value that should be validated
      * @param Constraint $constraint The constraint for the validation
      */
-    public function validate($value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$constraint instanceof ABN) {
             throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\ABN');
@@ -39,7 +39,7 @@ class ABNValidator extends ConstraintValidator
             return;
         }
 
-        if (!is_scalar($value) && !(is_object($value) && method_exists($value, '__toString'))) {
+        if (!is_scalar($value) && !(is_object($value) && EntityPropertyInfo::methodExists($value, '__toString'))) {
             throw new UnexpectedTypeException($value, 'string');
         }
 
@@ -49,7 +49,7 @@ class ABNValidator extends ConstraintValidator
         $abn = preg_replace("/\s+/", "", $value);
 
         // check length is 11 digits
-        if (strlen($abn)==11) {
+        if (strlen($abn) == 11) {
             // apply ato check method
             $sum = 0;
             foreach (static::WEIGHTS as $position => $weight) {

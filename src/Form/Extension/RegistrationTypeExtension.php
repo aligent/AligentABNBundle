@@ -22,13 +22,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class RegistrationTypeExtension extends AbstractTypeExtension
 {
-    /** @var  EventSubscriberInterface */
-    protected $subscriber;
+    protected EventSubscriberInterface $subscriber;
 
-    /** @var ConfigManager */
-    protected $configManager;
+    protected ConfigManager $configManager;
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         if ($this->configManager->get(Configuration::getConfigKeyByName(Configuration::ENABLED), false)) {
             $builder->add('abn', ABNType::class, [
@@ -47,28 +45,22 @@ class RegistrationTypeExtension extends AbstractTypeExtension
      *
      * @return string The name of the type being extended
      */
-    public function getExtendedType()
+    public function getExtendedType(): string
     {
         return FrontendCustomerUserRegistrationType::class;
     }
 
-    /**
-     * @param EventSubscriberInterface $subscriber
-     */
-    public function setSubscriber(EventSubscriberInterface $subscriber)
+    public function setSubscriber(EventSubscriberInterface $subscriber): void
     {
         $this->subscriber = $subscriber;
     }
 
-    /**
-     * @param ConfigManager $configManager
-     */
-    public function setConfigManager(ConfigManager $configManager)
+    public function setConfigManager(ConfigManager $configManager): void
     {
         $this->configManager = $configManager;
     }
 
-    public static function getExtendedTypes()
+    public static function getExtendedTypes(): iterable
     {
         return [
             FrontendCustomerUserRegistrationType::class,

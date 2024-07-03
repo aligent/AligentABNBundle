@@ -21,20 +21,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ABNType extends AbstractType
 {
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // Strip all whitespace so ABN can be unique
         $builder->addEventSubscriber(new StripWhitespaceSubscriber());
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'pattern' => '^(\d *?){11}$',
@@ -45,9 +38,9 @@ class ABNType extends AbstractType
     }
 
     /**
-     * @return string
+     * {@inheritDoc}
      */
-    public function getParent()
+    public function getParent(): ?string
     {
         return TextType::class;
     }

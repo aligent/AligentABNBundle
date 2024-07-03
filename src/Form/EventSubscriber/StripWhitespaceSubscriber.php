@@ -12,16 +12,13 @@
 
 namespace Aligent\ABNBundle\Form\EventSubscriber;
 
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class StripWhitespaceSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @param FormEvent $event
-     */
-    public function onSubmit(FormEvent $event)
+    public function onSubmit(FormEvent $event): void
     {
         $data = $event->getData();
 
@@ -30,7 +27,7 @@ class StripWhitespaceSubscriber implements EventSubscriberInterface
         }
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [FormEvents::SUBMIT => 'onSubmit'];
     }

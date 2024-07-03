@@ -7,12 +7,13 @@
  * @license
  * @link      http://www.aligent.com.au/
  */
+
 namespace Aligent\ABNBundle\Tests\Unit\DependencyInjection;
 
+use Aligent\ABNBundle\DependencyInjection\AligentABNExtension;
 use Aligent\ABNBundle\Form\EventListener\FrontendCustomerUserRegistrationTypeSubscriber;
 use Aligent\ABNBundle\Form\Extension\RegistrationTypeExtension;
 use Aligent\ABNBundle\Form\Type\CustomerGroupSelectType;
-use Aligent\ABNBundle\DependencyInjection\AligentABNExtension;
 use Oro\Bundle\TestFrameworkBundle\Test\DependencyInjection\ExtensionTestCase;
 
 class AligentABNExtensionTest extends ExtensionTestCase

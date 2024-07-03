@@ -7,6 +7,7 @@
  * @license
  * @link      http://www.aligent.com.au/
  */
+
 namespace Aligent\ABNBundle\Migrations\Schema;
 
 use Doctrine\DBAL\Schema\Schema;
@@ -20,7 +21,7 @@ class AligentABNBundleInstaller implements Installation
     /**
      * @inheritDoc
      */
-    public function getMigrationVersion()
+    public function getMigrationVersion(): string
     {
         return 'v1_3';
     }
@@ -28,7 +29,7 @@ class AligentABNBundleInstaller implements Installation
     /**
      * @inheritDoc
      */
-    public function up(Schema $schema, QueryBag $queries)
+    public function up(Schema $schema, QueryBag $queries): void
     {
         $table = $schema->getTable('oro_customer');
 
