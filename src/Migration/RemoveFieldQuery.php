@@ -20,15 +20,14 @@ use Psr\Log\LoggerInterface;
 
 class RemoveFieldQuery extends BaseRemoveFieldQuery
 {
-
-    public function execute(LoggerInterface $logger)
+    public function execute(LoggerInterface $logger): void
     {
         parent::execute($logger);
 
         $this->removeEntityConfig($logger);
     }
 
-    protected function removeEntityConfig($logger)
+    protected function removeEntityConfig($logger): void
     {
         $entityRow = $this->getEntityRow($this->entityClass);
         if (!$entityRow) {
@@ -54,12 +53,7 @@ class RemoveFieldQuery extends BaseRemoveFieldQuery
         $this->updateEntityData($logger, $entityData, $this->entityClass);
     }
 
-    /**
-     * @param string $entityClass
-     *
-     * @return array
-     */
-    protected function getEntityRow($entityClass)
+    protected function getEntityRow(string $entityClass): array
     {
         $getEntitySql = 'SELECT e.data 
                 FROM oro_entity_config as e 
@@ -73,17 +67,13 @@ class RemoveFieldQuery extends BaseRemoveFieldQuery
     }
 
     /**
-     * @param LoggerInterface $logger
-     * @param array           $entityData
-     * @param string          $entityClass
-     *
      * @throws DBALException
      */
     protected function updateEntityData(
         LoggerInterface $logger,
-        $entityData,
-        $entityClass
-    ) {
+        array $entityData,
+        string $entityClass
+    ): void {
 
         $data = $this->connection->convertToDatabaseValue($entityData, Type::TARRAY);
 

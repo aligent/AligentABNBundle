@@ -15,26 +15,20 @@ namespace Aligent\ABNBundle\Form\Type;
 use Doctrine\Persistence\ManagerRegistry;
 use Oro\Bundle\CustomerBundle\Entity\CustomerGroup;
 use Oro\Bundle\CustomerBundle\Entity\Repository\CustomerGroupRepository;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CustomerGroupSelectType extends AbstractType
 {
-    /** @var ManagerRegistry */
-    protected $registry;
+    protected ManagerRegistry $registry;
 
-    /**
-     * @param ManagerRegistry $registry
-     */
     public function __construct(ManagerRegistry $registry)
     {
         $this->registry = $registry;
     }
 
-
-    public function getName()
+    public function getName(): string
     {
         return 'aligent_abn_customer_group_select';
     }
@@ -42,7 +36,7 @@ class CustomerGroupSelectType extends AbstractType
     /**
      * {@inheritDoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefault('placeholder', 'aligent.abn.form.group_choice.placeholder');
         $resolver->setNormalizer(
@@ -65,7 +59,7 @@ class CustomerGroupSelectType extends AbstractType
     /**
      * {@inheritDoc}
      */
-    public function getParent()
+    public function getParent(): ?string
     {
         return ChoiceType::class;
     }

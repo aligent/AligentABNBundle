@@ -26,13 +26,11 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Generates the configuration tree builder.
-     *
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder The tree builder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root(AligentABNExtension::ALIAS);
+        $treeBuilder = new TreeBuilder(AligentABNExtension::ALIAS);
+        $rootNode = $treeBuilder->getRootNode();
 
         SettingsBuilder::append(
             $rootNode,
@@ -46,12 +44,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-
-    /**
-     * @param string $key
-     * @return string
-     */
-    public static function getConfigKeyByName($key)
+    public static function getConfigKeyByName(string $key): string
     {
         return implode(ConfigManager::SECTION_MODEL_SEPARATOR, [AligentABNExtension::ALIAS, $key]);
     }

@@ -13,33 +13,29 @@
 namespace Aligent\ABNBundle\Form\EventListener;
 
 use Aligent\ABNBundle\DependencyInjection\Configuration;
+use Oro\Bundle\ConfigBundle\Config\ConfigManager;
 use Oro\Bundle\CustomerBundle\Entity\Customer;
+use Oro\Bundle\CustomerBundle\Entity\CustomerGroup;
 use Oro\Bundle\CustomerBundle\Entity\CustomerUser;
 use Oro\Bundle\EntityBundle\ORM\Registry;
-use Oro\Bundle\ConfigBundle\Config\ConfigManager;
-use Oro\Bundle\CustomerBundle\Entity\CustomerGroup;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
 class FrontendCustomerUserRegistrationTypeSubscriber implements EventSubscriberInterface
 {
-    /** @var $registry Registry */
-    protected $registry;
+    protected Registry $registry;
 
-    /** @var ConfigManager  */
-    protected $configManager;
+    protected ConfigManager $configManager;
 
     /**
      * FrontendCustomerUserRegistrationTypeSubscriber constructor.
-     * @param Registry $registry
-     * @param ConfigManager $configManager
      */
     public function __construct(
         Registry $registry,
         ConfigManager $configManager
     ) {
-    
+
         $this->configManager = $configManager;
         $this->registry = $registry;
     }
@@ -47,17 +43,14 @@ class FrontendCustomerUserRegistrationTypeSubscriber implements EventSubscriberI
     /**
      * @inheritdoc
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             FormEvents::POST_SUBMIT => 'postSubmit'
         ];
     }
 
-    /**
-     * @param FormEvent $formEvent
-     */
-    public function postSubmit(FormEvent $formEvent)
+    public function postSubmit(FormEvent $formEvent): void
     {
         if ($this->configManager->get(Configuration::getConfigKeyByName(Configuration::ENABLED), false)) {
             /** @var CustomerUser $customerUser */
@@ -77,10 +70,8 @@ class FrontendCustomerUserRegistrationTypeSubscriber implements EventSubscriberI
 
     /**
      * Set the default group of the user if it is set and exists
-     * @param Customer $customer
-     * @param string $paramName
      */
-    protected function setDefaultGroup(Customer $customer, string $paramName)
+    protected function setDefaultGroup(Customer $customer, string $paramName): void
     {
         $groupId = $this->configManager->get(Configuration::getConfigKeyByName($paramName));
         if (isset($groupId)) {
